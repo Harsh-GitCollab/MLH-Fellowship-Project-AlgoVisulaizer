@@ -17,6 +17,9 @@
     font-weight: 500;
     font-family: sans-serif;
     list-style: none;
+    padding: 5px;
+    margin-left: 39px;
+
 }
 
 #nav_bar #logo {
@@ -28,14 +31,9 @@
     color: black;
 }
 
-#nav_bar li {
-    padding: 5px;
-    margin-left: 39px;
-    font-weight: 500;
-}
 
 #nav_bar .pivot {
-    margin-right: 180px;
+    margin-right: 260px;
 }
 
 
