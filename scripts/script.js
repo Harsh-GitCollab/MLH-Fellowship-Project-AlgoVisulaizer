@@ -1,6 +1,7 @@
 // imports 
 import { generateArray as bubGenerateArray, startAnimation as bubAnimate } from './bubble/canvas.js'
 import {generateArray as insGenerateArray, startSorting as insAnimate} from './insertion/canvas.js'
+import { generateArray as selGenerateArray, startSorting as selAnimate } from './selection/canvas.js'
 
 
 
@@ -24,6 +25,11 @@ insertion_sort.addEventListener("click", () => {
     insertKey("ins");
 });
 
+selection_sort.addEventListener("click", () => {
+    selGenerateArray();
+    insertKey("sel");
+})
+
 
 play_btn.addEventListener("click", sort);
 
@@ -39,6 +45,9 @@ function insertKey(id) {
     else if(id === 'ins') {
         btnArray.length = 0;
         btnArray.push('ins');
+    }else if(id === "sel") {
+        btnArray.length = 0;
+        btnArray.push('sel');
     }
 } 
 
@@ -47,6 +56,8 @@ function sort() {
         bubAnimate();
     }else if(btnArray[0] == 'ins') {
         insAnimate();
+    }else if(btnArray[0] == 'sel') {
+        selAnimate();
     }
 }
 
