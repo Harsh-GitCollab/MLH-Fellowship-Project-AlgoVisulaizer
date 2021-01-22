@@ -1,5 +1,6 @@
 // imports 
 import { generateArray as bubGenerateArray, startAnimation as bubAnimate } from './bubble/canvas.js'
+import {generateArray as insGenerateArray, startSorting as insAnimate} from './insertion/canvas.js'
 
 
 
@@ -16,8 +17,15 @@ bubble_sort.addEventListener("click", () => {
     bubGenerateArray();
     insertKey("bub");
 });
-play_btn.addEventListener("click", sort);
 
+
+insertion_sort.addEventListener("click", () => {
+    insGenerateArray();
+    insertKey("ins");
+});
+
+
+play_btn.addEventListener("click", sort);
 
 // the array to store the clicked btn 
 var btnArray = [];
@@ -28,13 +36,17 @@ function insertKey(id) {
         btnArray.push("bub");
         
     }
+    else if(id === 'ins') {
+        btnArray.length = 0;
+        btnArray.push('ins');
+    }
 } 
 
 function sort() {
     if(btnArray[0] == 'bub') {
         bubAnimate();
     }else if(btnArray[0] == 'ins') {
-
+        insAnimate();
     }
 }
 
