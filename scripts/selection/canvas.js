@@ -27,6 +27,7 @@ export function graph() {
 export var rectArray = [];
 
 export function generateArray() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     var color = "red";
     var x = 50, y , height = 10, width = 50;
     var values = [10, 15, 20, 30, 25, 35, 50, 1,  45, 10];
