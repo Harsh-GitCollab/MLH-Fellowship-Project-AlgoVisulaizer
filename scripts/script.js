@@ -1,5 +1,5 @@
 // imports 
-import { generateArray as bubGenerateArray, startAnimation as bubAnimate } from './bubble/canvas.js'
+import { generateArray as bubGenerateArray, startAnimation as bubAnimate, bubbleSortAnimationRunning } from './bubble/canvas.js'
 import {generateArray as insGenerateArray, startSorting as insAnimate} from './insertion/canvas.js'
 import { generateArray as selGenerateArray, startSorting as selAnimate } from './selection/canvas.js'
 import { generateArray as merGenerateArray, startSorting as merAnimate} from './merge/canvas.js'
@@ -8,10 +8,10 @@ import { generateArray as merGenerateArray, startSorting as merAnimate} from './
 
 // DOM elements
 
-var bubble_sort = document.getElementById('bub');
-var insertion_sort = document.getElementById('ins');
-var selection_sort = document.getElementById('sel');
-var merge_sort = document.getElementById('mer');
+export var bubble_sort = document.getElementById('bub');
+export var insertion_sort = document.getElementById('ins');
+export var selection_sort = document.getElementById('sel');
+export var merge_sort = document.getElementById('mer');
 
 var play_btn = document.getElementById("play");
 var notesPane = document.getElementsByClassName('notes')[0];
@@ -19,6 +19,11 @@ var notesPane = document.getElementsByClassName('notes')[0];
 // event listeners for all the btns
 
 bubble_sort.addEventListener("click", () => {
+    bubble_sort.style.color = "black";
+    insertion_sort.style.color = "white";
+    selection_sort.style.color = "white";
+    merge_sort.style.color = "white";
+
     bubGenerateArray();
     insertKey("bub");
     addNotes();
@@ -26,16 +31,28 @@ bubble_sort.addEventListener("click", () => {
 
 
 insertion_sort.addEventListener("click", () => {
+    bubble_sort.style.color = "white";
+    insertion_sort.style.color = "black";
+    selection_sort.style.color = "white";
+    merge_sort.style.color = "white";
     insGenerateArray();
     insertKey("ins");
 });
 
 selection_sort.addEventListener("click", () => {
+    bubble_sort.style.color = "white";
+    insertion_sort.style.color = "white";
+    selection_sort.style.color = "black";
+    merge_sort.style.color = "white";
     selGenerateArray();
     insertKey("sel");
 })
 
 merge_sort.addEventListener("click", () => {
+    bubble_sort.style.color = "white";
+    insertion_sort.style.color = "white";
+    selection_sort.style.color = "white";
+    merge_sort.style.color = "black";
     merGenerateArray();
     insertKey("mer");
 })

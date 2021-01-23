@@ -7,7 +7,7 @@ export function promise_hightlight(current_index, c, prev_index) {
             ctx.clearRect(0, 0, innerWidth, innerHeight);
             
             if(prev_index != undefined) {
-                for( var j = 0; j < 10; j++) {
+                for( var j = 0; j < 12; j++) {
                     rectArray[current_index].draw(rectArray[current_index].x, rectArray[current_index].y, rectArray[current_index].width, rectArray[current_index].height, c );
                     rectArray[prev_index].draw(rectArray[prev_index].x, rectArray[prev_index].y, rectArray[prev_index].width, rectArray[prev_index].height, "green" );
     
@@ -17,7 +17,7 @@ export function promise_hightlight(current_index, c, prev_index) {
                     }
                 }
             }else {
-                 for( var j = 0; j < 10; j++) {
+                 for( var j = 0; j < 12; j++) {
                     rectArray[current_index].draw(rectArray[current_index].x, rectArray[current_index].y, rectArray[current_index].width, rectArray[current_index].height, c );
         
                     if( j !=  current_index) {
@@ -37,7 +37,7 @@ function swap(current_index, prev_index, buffer_x1, buffer_x2, callBack) {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
         
     
-    for(var j=0; j< 10; j++) {
+    for(var j=0; j< 12; j++) {
         if(j != current_index && j != prev_index) {
             rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "rgb(152, 255, 204)");
         }
@@ -73,7 +73,7 @@ export function promise_swap(current_index, prev_index, buffer_x1, buffer_x2) {
 export function sortingOver() {
     
     ctx.clearRect(0, 0, innerWidth, innerHeight );
-    for(var j = 0; j < 10; j++) {
+    for(var j = 0; j < 12; j++) {
         rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "green"); 
     }
     graph();

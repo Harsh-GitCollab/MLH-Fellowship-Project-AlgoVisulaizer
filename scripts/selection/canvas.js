@@ -32,14 +32,14 @@ export function generateArray() {
     var x = 50, y , height = 10, width = 50;
     var values = [];
     var values = [];
-    for(var i=0; i<13; i++) {
+    for(var i=0; i<12; i++) {
         var randomNum = Math.floor((Math.random() * 50) + 1);
         values.push(randomNum);
     }
 
     // genesis
 
-    for(var i=0; i<13; i++) {
+    for(var i=0; i<12; i++) {
         
         height = 10 * values[i];
         y = 550 - height;
@@ -57,7 +57,7 @@ export function startSorting() {
 
     function find_min_idx(idx) {
         let min = idx;
-        for(let j=idx+1; j < 10; j++) {
+        for(let j=idx+1; j < 12; j++) {
             if(rectArray[j].value < rectArray[min].value) {
                 min = j;
             }
@@ -66,8 +66,8 @@ export function startSorting() {
     }
 
     async function animate(rectIndex) {
-        if(rectIndex < 10) {
-            await promise_hightlight(rectIndex, "black");
+        if(rectIndex < 12) {
+            await promise_hightlight(rectIndex, "yellow");
             var mn_index = find_min_idx(rectIndex);
 
             if(mn_index != rectIndex) {

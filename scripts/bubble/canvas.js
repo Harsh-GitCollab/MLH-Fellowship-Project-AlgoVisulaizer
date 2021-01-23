@@ -1,5 +1,6 @@
 import Rectangle  from '../bubble/rectangle.js'
 import {promise_hightlight, promise_swap, sortingOver} from '../bubble/animate.js'
+import { bubble_sort, insertion_sort, selection_sort, merge_sort } from '../script.js';
 
 
 
@@ -7,6 +8,7 @@ import {promise_hightlight, promise_swap, sortingOver} from '../bubble/animate.j
 var canvas = document.getElementById("myCanvas");
 canvas.width = 1200;
 canvas.height = 870;
+
 
 // getting the magic brush
 export var ctx = canvas.getContext("2d");
@@ -38,14 +40,14 @@ export function generateArray() {
     var color = "red";
     var x = 50, y , height = 10, width = 50;
     var values = [];
-    for(var i=0; i<13; i++) {
+    for(var i=0; i<12; i++) {
         var randomNum = Math.floor((Math.random() * 50) + 1);
         values.push(randomNum);
     }
 
     // genesis
 
-    for(var i=0; i<13; i++) {
+    for(var i=0; i<12; i++) {
         
         height = 10 * values[i];
         y = 550 - height;
@@ -60,16 +62,17 @@ export function generateArray() {
 
 
 
-export var lastIndex = 9;
+export var lastIndex = 11, bubbleSortAnimationRunning = false;
 
 export function startAnimation() {
+    bubbleSortAnimationRunning = true;
     var rectPointer = 0, asyncAwaitRepeatindex = 0,  isUnsorted = true;
     
     async function animate(rectIndex) {
         
         if(rectIndex < lastIndex-1) {
             
-            await promise_hightlight(rectIndex, "black");
+            await promise_hightlight(rectIndex, "yellow");
             
             if( rectArray[rectIndex].value > rectArray[rectIndex+1].value ) {
                 isUnsorted = true;
@@ -87,7 +90,7 @@ export function startAnimation() {
         }
         else if(rectIndex == lastIndex-1) {
             
-            await promise_hightlight(rectIndex, "black");
+            await promise_hightlight(rectIndex, "yellow");
             
             if( rectArray[rectIndex].value > rectArray[rectIndex+1].value ) {
                 await promise_hightlight(rectIndex, "red");
@@ -129,8 +132,8 @@ export function startAnimation() {
                 await asyncAwaitRepeat(index + 1);
         
             }else {
-                await sortingOver();
-                await sortingOver();
+                sortingOver();
+                bubbleSortAnimationRunning = false;
             }
             
             

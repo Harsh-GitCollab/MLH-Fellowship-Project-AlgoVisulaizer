@@ -7,7 +7,7 @@ export function promise_hightlight(i, c) {
         setTimeout( () => {
             ctx.clearRect(0, 0, innerWidth, innerHeight);
 
-            for( var j = 0; j < 10; j++) {
+            for( var j = 0; j < 12; j++) {
                 rectArray[i].draw(rectArray[i].x, rectArray[i].y, rectArray[i].width, rectArray[i].height, c );
                 rectArray[i + 1].draw(rectArray[i + 1].x, rectArray[i + 1].y, rectArray[i + 1].width, rectArray[i + 1].height, c );
 
@@ -16,7 +16,7 @@ export function promise_hightlight(i, c) {
                 }
 
                 if(j != i && j != i+1 && j <= lastIndex) {
-                    rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "turquoise");
+                    rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "rgb(152, 255, 204)");
                 }
             }
             graph();
@@ -31,7 +31,7 @@ export function promise_hightlight(i, c) {
 export function sortingOver() {
     
     ctx.clearRect(0, 0, innerWidth, innerHeight );
-    for(var j = 0; j < 10; j++) {
+    for(var j = 0; j < 12; j++) {
         rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "green"); 
     }
     graph();
@@ -53,7 +53,7 @@ export function swap(idx, buffer_x1, buffer_x2, callBack) {
     rectArray[idx+1].update(buffer_x1, "backward");
     
     
-    for(var j=0; j< 10; j++) {
+    for(var j=0; j< 12; j++) {
         if(j != idx && j != idx+1 && j <= lastIndex) {
             rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "rgb(153, 255, 204)");
         }

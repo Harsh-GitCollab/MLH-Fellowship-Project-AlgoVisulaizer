@@ -7,7 +7,7 @@ export function promise_hightlight(current_index, c, mn_index) {
             ctx.clearRect(0, 0, innerWidth, innerHeight);
             
             if(mn_index != undefined) {
-                for( var j = 0; j < 10; j++) {
+                for( var j = 0; j < 12; j++) {
                     rectArray[current_index].draw(rectArray[current_index].x, rectArray[current_index].y, rectArray[current_index].width, rectArray[current_index].height, c );
                     rectArray[mn_index].draw(rectArray[mn_index].x, rectArray[mn_index].y, rectArray[mn_index].width, rectArray[mn_index].height, c );
     
@@ -16,11 +16,11 @@ export function promise_hightlight(current_index, c, mn_index) {
                     }
     
                     if(j != current_index && j != mn_index && j >=  current_index) {
-                        rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "turquoise");
+                        rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "rgb(153, 255, 204)");
                     }
                 }
             }else {
-                 for( var j = 0; j < 10; j++) {
+                 for( var j = 0; j < 12; j++) {
                     rectArray[current_index].draw(rectArray[current_index].x, rectArray[current_index].y, rectArray[current_index].width, rectArray[current_index].height, c );
     
                     if(j < current_index) {
@@ -28,7 +28,7 @@ export function promise_hightlight(current_index, c, mn_index) {
                     }
     
                     if( j >  current_index) {
-                        rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "turquoise");
+                        rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "rgb(153, 255, 204)");
                     }
                 }
             }
@@ -44,7 +44,7 @@ export function swap(current_index, mn_index, buffer_x1, buffer_x2, callBack) {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
         
     
-    for(var j=0; j< 10; j++) {
+    for(var j=0; j< 12; j++) {
         if(j != current_index && j != mn_index && j > current_index) {
             rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "rgb(153, 255, 204)");
         }

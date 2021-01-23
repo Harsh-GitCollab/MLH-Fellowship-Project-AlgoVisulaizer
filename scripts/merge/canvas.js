@@ -34,14 +34,17 @@ export function generateArray() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     var color = "red";
     var x = 50, y , height = 5, width = 50;
-    var values = [10, 10, 15, 20, 30, 25, 35, 50, 45, 3];
-
+    var values = [];
+    for(var i=0; i<12; i++) {
+        var randomNum = Math.floor((Math.random() * 50) + 1);
+        values.push(randomNum);
+    }
     // genesis
 
-    for(var i=0; i<10; i++) {
+    for(var i=0; i<12; i++) {
         
         height = 5 * values[i];
-        y = 300 - height;
+        y = 400 - height;
         rectArray.push(new Rectangle(x, y, width, height, color, values[i] ));
         rectArray[i].draw(x,y, width, height, color);
         x = x + width + 50;
@@ -136,8 +139,10 @@ export function startSorting() {
 
                 for(var j=low; j<= high; j++) {
                     ctx.clearRect(arr[j].x, arr[j].y, arr[j].width, arr[j].height);
+                    console.log("Look here!!!!!!!");
+                    console.log(arr[j])
                     debugger;
-                    arr[j].draw(arr[j].x, (600 - arr[j].height), arr[j].width, arr[j].height, "yellow");
+                    arr[j].draw(arr[j].x, (800 - arr[j].height), arr[j].width, arr[j].height, "yellow");
                 }
                 
                 resolve();
@@ -155,7 +160,7 @@ export function startSorting() {
                 
                 var x = (100 * k + 50); 
 
-                rect.draw(x, 300-rect.height, rect.width, rect.height, "green");
+                rect.draw(x, 400-rect.height, rect.width, rect.height, "green");
                 resolve();
             }, 1000)
             
@@ -178,7 +183,7 @@ export function startSorting() {
         }
     }
 
-    mergeSort(rectArray, 0, 9);
+    mergeSort(rectArray, 0, 11);
 
 }
 
