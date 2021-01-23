@@ -5,8 +5,8 @@ import Rectangle  from '../merge/rectangle.js'
 
 // selectors 
 var canvas = document.getElementById("myCanvas");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 1200;
+canvas.height = 870;
 
 // getting the magic brush
 export var ctx = canvas.getContext("2d");

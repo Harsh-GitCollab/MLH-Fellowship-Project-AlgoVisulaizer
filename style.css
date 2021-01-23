@@ -55,7 +55,7 @@
 }
 
 .notes {
-
+    background:rgb(191, 232, 240);
     border-left: 6px solid rgb(80, 204, 235);
     width: 600px;
 }

@@ -5,8 +5,8 @@ import {promise_hightlight, promise_swap, sortingOver} from '../bubble/animate.j
 
 // selectors 
 var canvas = document.getElementById("myCanvas");
-canvas.width = 1330;
-canvas.height = 917;
+canvas.width = 1200;
+canvas.height = 870;
 
 // getting the magic brush
 export var ctx = canvas.getContext("2d");
@@ -37,11 +37,15 @@ export function generateArray() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     var color = "red";
     var x = 50, y , height = 10, width = 50;
-    var values = [10, 10, 15, 20, 30, 25, 35, 50, 45, 10];
+    var values = [];
+    for(var i=0; i<13; i++) {
+        var randomNum = Math.floor((Math.random() * 50) + 1);
+        values.push(randomNum);
+    }
 
     // genesis
 
-    for(var i=0; i<10; i++) {
+    for(var i=0; i<13; i++) {
         
         height = 10 * values[i];
         y = 550 - height;
