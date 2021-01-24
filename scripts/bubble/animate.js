@@ -1,4 +1,4 @@
-import { ctx, rectArray, graph, lastIndex } from '../bubble/canvas.js'           
+import { ctx, rectArray, lastIndex } from '../bubble/canvas.js'           
 
 // promise highlight
 
@@ -19,7 +19,7 @@ export function promise_hightlight(i, c) {
                     rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "rgb(152, 255, 204)");
                 }
             }
-            graph();
+            
             resolve();
         }, 800 );
     } )
@@ -34,21 +34,14 @@ export function sortingOver() {
     for(var j = 0; j < 12; j++) {
         rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "green"); 
     }
-    graph();
-        
+      
 } 
 
 // swap function 
 
 export function swap(idx, buffer_x1, buffer_x2, callBack) {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
-    
-    console.log("we are in the swap function");
-    console.log("i is" + idx);
-    console.log(rectArray[idx].x);
-    console.log(rectArray[idx+1].x);
-
-    
+        
     rectArray[idx].update(buffer_x2, "forward");
     rectArray[idx+1].update(buffer_x1, "backward");
     
@@ -61,7 +54,7 @@ export function swap(idx, buffer_x1, buffer_x2, callBack) {
             rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "green");
         }
     }
-    graph();
+
     
     
     if(rectArray[idx].x < buffer_x2 && rectArray[idx+1].x > buffer_x1) {
@@ -69,8 +62,6 @@ export function swap(idx, buffer_x1, buffer_x2, callBack) {
       var requestId =   window.requestAnimationFrame(() => {swap(idx, buffer_x1, buffer_x2, callBack)});
         
     }else if(rectArray[idx].x >= buffer_x2 && rectArray[idx+1].x <= buffer_x1) {
-        
-        console.log(requestId);
         callBack();
         window.cancelAnimationFrame(requestId);
     }

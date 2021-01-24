@@ -1,29 +1,12 @@
-import Rectangle  from '../selection/rectangle.js'
+import Rectangle  from '../bubble/rectangle.js'
 import { promise_hightlight, promise_swap } from '../selection/animate.js';
-import {isPlaying} from '../script.js'
+
 
 var canvas = document.getElementById("myCanvas");
 canvas.width = 1200;
 canvas.height = 870;
 
 export var ctx = canvas.getContext("2d");
-
-export function graph() {
-    for(var i=0; i <= 18; i++) {
-        ctx.beginPath();
-        ctx.moveTo(50 * i, 0);
-        ctx.lineTo(50 * i, 550);
-        ctx.stroke();
-    }
-
-    for(var i=0; i <= 11; i++) {
-        ctx.beginPath();
-        ctx.moveTo(0, 50 * i);
-        ctx.lineTo(880, 50 * i );
-        ctx.stroke();
-    }
-    
-}
 
 export var rectArray = [];
 
@@ -51,8 +34,6 @@ export function generateArray() {
         rectArray[i].draw(x,y, width, height, color);
         x = x + width + 50;
     }
-    graph();
-    console.log("-------------------------  the genesis is over ------------------------------------");
 }
 
 
@@ -86,9 +67,6 @@ export function startSorting() {
             await promise_hightlight( mn_index, "green");
             
             await animate(rectIndex + 1);
-            if(current_index === 11) {
-                isPlaying = false;
-            }
 
         }
         
@@ -98,10 +76,8 @@ export function startSorting() {
 
     function promise_animate (index) {
         return new Promise( async (resolve) => {
-            debugger;
             await animate(index);
-            resolve();  // since asyncAwait function is a asynchronous so we cannot directly resolve() it
-            debugger;
+            resolve();  
         })
     }
 

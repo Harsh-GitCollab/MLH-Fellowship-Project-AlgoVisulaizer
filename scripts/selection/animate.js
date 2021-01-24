@@ -1,4 +1,4 @@
-import { ctx, rectArray, graph } from '../selection/canvas.js'
+import { ctx, rectArray } from '../selection/canvas.js'
 
 
 export function promise_hightlight(current_index, c, mn_index) {
@@ -33,7 +33,6 @@ export function promise_hightlight(current_index, c, mn_index) {
                 }
             }
             
-            graph();
             resolve();
         }, 1000 );
     } )
@@ -55,7 +54,6 @@ export function swap(current_index, mn_index, buffer_x1, buffer_x2, callBack) {
 
     rectArray[current_index].update(buffer_x2, "forward");
     rectArray[mn_index].update(buffer_x1, "backward");
-    graph();
     
     
     if(rectArray[current_index].x < buffer_x2 && rectArray[mn_index].x > buffer_x1) {

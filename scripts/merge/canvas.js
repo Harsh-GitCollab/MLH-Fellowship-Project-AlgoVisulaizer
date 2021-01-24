@@ -1,6 +1,6 @@
 import { promise_hightlight } from '../merge/animate.js';
 import Rectangle  from '../merge/rectangle.js'
-import {isPlaying} from '../script.js'
+
 
 
 
@@ -11,23 +11,6 @@ canvas.height = 870;
 
 // getting the magic brush
 export var ctx = canvas.getContext("2d");
-
-export function graph() {
-    for(var i=0; i <= 25; i++) {
-        ctx.beginPath();
-        ctx.moveTo(50 * i, 0);   // vertical
-        ctx.lineTo(50 * i, 900);
-        ctx.stroke();
-    }
-
-    for(var i=0; i <=  2; i++) {
-        ctx.beginPath();
-        ctx.moveTo(0, 300 * i);  // horizontal 
-        ctx.lineTo(1200, 300 * i );
-        ctx.stroke();
-    }
-}
-
 
 export var rectArray = [];
 
@@ -53,8 +36,6 @@ export function generateArray() {
         rectArray[i].draw(x,y, width, height, color);
         x = x + width + 50;
     }
-    graph();
-    console.log("-------------------------  the genesis is over ------------------------------------");
 
 }
 
@@ -64,7 +45,6 @@ export function startSorting() {
     async function mergeAnimate(arr, k, aux1, i, aux2, j) {
         return new Promise(async (resolve) => {
             if(i < aux1.length && j < aux2.length) {
-                console.log("since " + (i) + " and " + (j) + " is less than  " + (aux1.length) + " , " + (aux2.length));
                 if(aux1[i].value < aux2[j].value) {
                         
                     arr[k]  = aux1[i];
@@ -80,14 +60,10 @@ export function startSorting() {
                 
 
             }else if(i < aux1.length) {
-                console.log("aux1 is something left");
-                   
                 arr[k] = aux1[i];
                 await replace(k, arr[k]);            
                 await mergeAnimate(arr, k+1, aux1, i+1, aux2, j);
-            }else if(j < aux2.length){
-                console.log("aux2 is something left");
-                        
+            }else if(j < aux2.length){                        
                 arr[k] = aux2[j];
                 await replace(k, arr[k]);            
                 await mergeAnimate(arr, k+1, aux1, i, aux2, j+1)
@@ -117,22 +93,11 @@ export function startSorting() {
             for(var i=0; i<n2; i++) {
                 aux2.push(new Rectangle(arr[m+1+i].x, arr[m+1+i].y, arr[m+1+i].width, arr[m+1+i].height, arr[m+1+i].color, arr[m+1+i].value  ));
             }
-        
-            console.log(aux1);
-            console.log(aux2);
-
-        
-
             i=0, j=0, k=l;
 
             await  mergeAnimate(arr, k, aux1, i, aux2, j);
             
-            resolve();
-
-                
-
-
-        
+            resolve();        
         })
     }
 
@@ -143,9 +108,6 @@ export function startSorting() {
 
                 for(var j=low; j<= high; j++) {
                     ctx.clearRect(arr[j].x, arr[j].y-15, arr[j].width, arr[j].height+15);
-                    console.log("Look here!!!!!!!");
-                    console.log(arr[j])
-                    debugger;
                     arr[j].draw(arr[j].x, (800 - arr[j].height), arr[j].width, arr[j].height, "yellow");
                 }
                 
@@ -157,7 +119,7 @@ export function startSorting() {
     }
 
     function replace(k, rect) {
-        console.log(rect);
+    
         return new Promise((resolve) => {
             setTimeout(() => {
                 ctx.clearRect(rect.x, rect.y-15, rect.width, rect.height+15);
@@ -174,9 +136,6 @@ export function startSorting() {
     async function mergeSort(arr, low, high) {
         await promise_hightlight(low, "yellow", high); 
         if(low == high) {
-            
-            debugger;
-
             return;
         }else {
             

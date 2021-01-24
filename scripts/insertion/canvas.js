@@ -1,6 +1,5 @@
-import Rectangle  from '../insertion/rectangle.js'
+import Rectangle  from '../bubble/rectangle.js'
 import {promise_hightlight, promise_swap, sortingOver} from '../insertion/animate.js'
-import { isPlaying } from '../script.js'
 
 
 var canvas = document.getElementById("myCanvas");
@@ -8,23 +7,6 @@ canvas.width = 1200;
 canvas.height = 870;
 
 export var ctx = canvas.getContext("2d");
-
-export function graph() {
-    for(var i=0; i <= 18; i++) {
-        ctx.beginPath();
-        ctx.moveTo(50 * i, 0);
-        ctx.lineTo(50 * i, 550);
-        ctx.stroke();
-    }
-
-    for(var i=0; i <= 11; i++) {
-        ctx.beginPath();
-        ctx.moveTo(0, 50 * i);
-        ctx.lineTo(880, 50 * i );
-        ctx.stroke();
-    }
-    
-}
 
 export var rectArray = [];
 
@@ -52,8 +34,7 @@ export function generateArray() {
         rectArray[i].draw(x,y, width, height, color);
         x = x + width + 50;
     }
-    graph();
-    console.log("-------------------------  the genesis is over ------------------------------------");
+    
 }
 
 
@@ -79,7 +60,7 @@ export function startSorting() {
                 await insert(rectIndex, prev_index, buffer_x1, buffer_x2);
                 resolve();
             } else {
-                debugger;
+            
                 resolve();
             }
         } )
@@ -119,7 +100,7 @@ export function startSorting() {
 
                 if(rectIndex == 11) {
                     sortingOver();
-                    isPlaying = false;
+
                 } 
                 
             }

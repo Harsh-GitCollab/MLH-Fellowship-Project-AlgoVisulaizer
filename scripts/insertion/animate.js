@@ -1,4 +1,4 @@
-import { ctx, rectArray, graph } from '../insertion/canvas.js'
+import { ctx, rectArray } from '../insertion/canvas.js'
 
 
 export function promise_hightlight(current_index, c, prev_index) {
@@ -25,10 +25,8 @@ export function promise_hightlight(current_index, c, prev_index) {
                     }
                 }
             }
-            
-            graph();
             resolve();
-        }, 1000 );
+        }, 800 );
     } )
 }
 
@@ -47,10 +45,6 @@ function swap(current_index, prev_index, buffer_x1, buffer_x2, callBack) {
 
     rectArray[current_index].update(buffer_x1, "backward");
     rectArray[prev_index].update(buffer_x2, "forward");
-
-    
-    graph();
-    
     
     if(rectArray[current_index].x > buffer_x1 && rectArray[prev_index].x < buffer_x2) {
     
@@ -76,6 +70,5 @@ export function sortingOver() {
     for(var j = 0; j < 12; j++) {
         rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "green"); 
     }
-    graph();
         
 }

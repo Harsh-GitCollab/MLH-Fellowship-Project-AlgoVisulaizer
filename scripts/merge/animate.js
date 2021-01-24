@@ -1,4 +1,4 @@
-import { ctx, rectArray, graph } from '../merge/canvas.js'
+import { ctx, rectArray } from '../merge/canvas.js'
 
 export function promise_hightlight(low, c, high) {
     return new Promise( (resolve) => {
@@ -13,9 +13,6 @@ export function promise_hightlight(low, c, high) {
                 }
                 
             }
-            
-            
-            graph();
             resolve();
         }, 1000 );
     } )

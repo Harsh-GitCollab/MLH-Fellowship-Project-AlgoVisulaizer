@@ -1,4 +1,4 @@
-import { ctx } from '../bubble/canvas.js'                   // canvas.js
+import { ctx } from '../bubble/canvas.js'       
 
 // pre-genesis soup
 export default class Rectangle {
@@ -39,7 +39,7 @@ export default class Rectangle {
     
     }
     update(destination, direction) {
-        console.log("the update function was called");
+        
         if(direction == "forward") {
           if(this.x < destination ) {   // the update method is responsible for the swapping animation
             this.x += 10;
