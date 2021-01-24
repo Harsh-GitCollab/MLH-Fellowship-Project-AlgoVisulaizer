@@ -32,6 +32,9 @@ export var rectArray = [];
 
 export function generateArray() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if(rectArray.length != 0) {
+        rectArray.length = 0;
+    }
     var color = "red";
     var x = 50, y , height = 5, width = 50;
     var values = [];
