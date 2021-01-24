@@ -1,5 +1,6 @@
 import { promise_hightlight } from '../merge/animate.js';
 import Rectangle  from '../merge/rectangle.js'
+import {isPlaying} from '../script.js'
 
 
 
@@ -80,7 +81,7 @@ export function startSorting() {
 
             }else if(i < aux1.length) {
                 console.log("aux1 is something left");
-                        
+                   
                 arr[k] = aux1[i];
                 await replace(k, arr[k]);            
                 await mergeAnimate(arr, k+1, aux1, i+1, aux2, j);

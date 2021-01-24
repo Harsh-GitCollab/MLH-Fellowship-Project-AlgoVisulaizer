@@ -1,5 +1,5 @@
 // imports 
-import { generateArray as bubGenerateArray, startAnimation as bubAnimate, bubbleSortAnimationRunning } from './bubble/canvas.js'
+import { generateArray as bubGenerateArray, startAnimation as bubAnimate } from './bubble/canvas.js'
 import {generateArray as insGenerateArray, startSorting as insAnimate} from './insertion/canvas.js'
 import { generateArray as selGenerateArray, startSorting as selAnimate } from './selection/canvas.js'
 import { generateArray as merGenerateArray, startSorting as merAnimate} from './merge/canvas.js'
@@ -16,45 +16,126 @@ export var merge_sort = document.getElementById('mer');
 var play_btn = document.getElementById("play");
 var notesPane = document.getElementsByClassName('notes')[0];
 
+// toggle button to check if animation if running
+export var isPlaying = false;
+
+// check the session storage
+if(sessionStorage.getItem("btnClicked") != null) {
+    if(sessionStorage.getItem("btnClicked") === "bub") {
+        window.onload = () => {
+            bubble_sort.style.color = "black";
+            insertion_sort.style.color = "white";
+            selection_sort.style.color = "white";
+            merge_sort.style.color = "white";
+    
+            bubGenerateArray();
+            insertKey("bub");
+            addNotes();
+            sessionStorage.removeItem("btnClicked");
+        }
+    } else if(sessionStorage.getItem("btnClicked") === "ins") {
+        window.onload = () => {
+            bubble_sort.style.color = "white";
+            insertion_sort.style.color = "black";
+            selection_sort.style.color = "white";
+            merge_sort.style.color = "white";
+
+            insGenerateArray();
+            insertKey("ins");
+            addNotes();
+            sessionStorage.removeItem("btnClicked");
+        }
+    }else if(sessionStorage.getItem("btnClicked") === "sel") {
+        window.onload = () => {
+            bubble_sort.style.color = "white";
+            insertion_sort.style.color = "white";
+            selection_sort.style.color = "black";
+            merge_sort.style.color = "white";
+
+            selGenerateArray();
+            insertKey("sel");
+            addNotes();
+            sessionStorage.removeItem("btnClicked");
+        }
+    }else if(sessionStorage.getItem("btnClicked") === "mer") {
+        window.onload = () => {
+            bubble_sort.style.color = "white";
+            insertion_sort.style.color = "white";
+            selection_sort.style.color = "white";
+            merge_sort.style.color = "black";
+
+            merGenerateArray();
+            insertKey('mer');
+            addNotes();
+            sessionStorage.removeItem("btnClicked");
+            
+        }
+    }
+}
+
 // event listeners for all the btns
 
 bubble_sort.addEventListener("click", () => {
-    bubble_sort.style.color = "black";
-    insertion_sort.style.color = "white";
-    selection_sort.style.color = "white";
-    merge_sort.style.color = "white";
+    if(isPlaying === false) {
+        bubble_sort.style.color = "black";
+        insertion_sort.style.color = "white";
+        selection_sort.style.color = "white";
+        merge_sort.style.color = "white";
 
-    bubGenerateArray();
-    insertKey("bub");
-    addNotes();
+        bubGenerateArray();
+        insertKey("bub");
+        addNotes();
+    }else {
+        sessionStorage.setItem("btnClicked", "bub");
+        location.reload();
+        
+    }
 });
 
 
 insertion_sort.addEventListener("click", () => {
-    bubble_sort.style.color = "white";
-    insertion_sort.style.color = "black";
-    selection_sort.style.color = "white";
-    merge_sort.style.color = "white";
-    insGenerateArray();
-    insertKey("ins");
+    if(isPlaying === false) {
+        bubble_sort.style.color = "white";
+        insertion_sort.style.color = "black";
+        selection_sort.style.color = "white";
+        merge_sort.style.color = "white";
+        insGenerateArray();
+        insertKey("ins");
+    }else {
+        sessionStorage.setItem("btnClicked", "ins");
+        location.reload();
+        
+    }
 });
 
 selection_sort.addEventListener("click", () => {
-    bubble_sort.style.color = "white";
-    insertion_sort.style.color = "white";
-    selection_sort.style.color = "black";
-    merge_sort.style.color = "white";
-    selGenerateArray();
-    insertKey("sel");
+    if(isPlaying === false) {
+        bubble_sort.style.color = "white";
+        insertion_sort.style.color = "white";
+        selection_sort.style.color = "black";
+        merge_sort.style.color = "white";
+        selGenerateArray();
+        insertKey("sel");
+    }else {
+        sessionStorage.setItem("btnClicked", "sel");
+        location.reload();
+        
+    }
 })
 
 merge_sort.addEventListener("click", () => {
-    bubble_sort.style.color = "white";
-    insertion_sort.style.color = "white";
-    selection_sort.style.color = "white";
-    merge_sort.style.color = "black";
-    merGenerateArray();
-    insertKey("mer");
+    if(isPlaying === false) {
+        bubble_sort.style.color = "white";
+        insertion_sort.style.color = "white";
+        selection_sort.style.color = "white";
+        merge_sort.style.color = "black";
+        merGenerateArray();
+        insertKey("mer");
+    }else {
+        sessionStorage.setItem("btnClicked", "mer");
+        location.reload();
+        
+    }
 })
 
 
@@ -100,13 +181,16 @@ function insertKey(id) {
 
 function sort() {
     if(btnArray[0] == 'bub') {
-        bubAnimate();
-        
+        isPlaying = true;
+        bubAnimate();        
     }else if(btnArray[0] == 'ins') {
+        isPlaying = true;
         insAnimate();
     }else if(btnArray[0] == 'sel') {
+        isPlaying = true;
         selAnimate();
     }else if(btnArray[0] == 'mer') {
+        isPlaying = true;
         merAnimate();
     }
 }

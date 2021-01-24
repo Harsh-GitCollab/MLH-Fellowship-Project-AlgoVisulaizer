@@ -1,6 +1,6 @@
 import Rectangle  from '../bubble/rectangle.js'
 import {promise_hightlight, promise_swap, sortingOver} from '../bubble/animate.js'
-import { bubble_sort, insertion_sort, selection_sort, merge_sort } from '../script.js';
+import { isPlaying } from '../script.js';
 
 
 
@@ -66,10 +66,10 @@ export function generateArray() {
 
 
 
-export var lastIndex = 11, bubbleSortAnimationRunning = false;
+export var lastIndex = 11;
 
 export function startAnimation() {
-    bubbleSortAnimationRunning = true;
+    
     var rectPointer = 0, asyncAwaitRepeatindex = 0,  isUnsorted = true;
     
     async function animate(rectIndex) {
@@ -137,7 +137,7 @@ export function startAnimation() {
         
             }else {
                 sortingOver();
-                bubbleSortAnimationRunning = false;
+                isPlaying = false;
             }
             
             

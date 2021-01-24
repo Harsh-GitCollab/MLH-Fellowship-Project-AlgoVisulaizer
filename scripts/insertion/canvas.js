@@ -1,6 +1,6 @@
 import Rectangle  from '../insertion/rectangle.js'
 import {promise_hightlight, promise_swap, sortingOver} from '../insertion/animate.js'
-
+import { isPlaying } from '../script.js'
 
 
 var canvas = document.getElementById("myCanvas");
@@ -119,6 +119,7 @@ export function startSorting() {
 
                 if(rectIndex == 11) {
                     sortingOver();
+                    isPlaying = false;
                 } 
                 
             }

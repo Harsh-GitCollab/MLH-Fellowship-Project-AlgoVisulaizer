@@ -1,5 +1,6 @@
 import Rectangle  from '../selection/rectangle.js'
 import { promise_hightlight, promise_swap } from '../selection/animate.js';
+import {isPlaying} from '../script.js'
 
 var canvas = document.getElementById("myCanvas");
 canvas.width = 1200;
@@ -85,6 +86,9 @@ export function startSorting() {
             await promise_hightlight( mn_index, "green");
             
             await animate(rectIndex + 1);
+            if(current_index === 11) {
+                isPlaying = false;
+            }
 
         }
         
