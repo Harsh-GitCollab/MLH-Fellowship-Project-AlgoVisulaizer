@@ -138,7 +138,7 @@ export function startSorting() {
             setTimeout(() => {
 
                 for(var j=low; j<= high; j++) {
-                    ctx.clearRect(arr[j].x, arr[j].y, arr[j].width, arr[j].height);
+                    ctx.clearRect(arr[j].x, arr[j].y-15, arr[j].width, arr[j].height+15);
                     console.log("Look here!!!!!!!");
                     console.log(arr[j])
                     debugger;
@@ -156,7 +156,7 @@ export function startSorting() {
         console.log(rect);
         return new Promise((resolve) => {
             setTimeout(() => {
-                ctx.clearRect(rect.x, rect.y, rect.width, rect.height);
+                ctx.clearRect(rect.x, rect.y-15, rect.width, rect.height+15);
                 
                 var x = (100 * k + 50); 
 
