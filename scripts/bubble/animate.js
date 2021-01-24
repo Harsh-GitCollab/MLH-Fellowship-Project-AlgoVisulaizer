@@ -21,7 +21,7 @@ export function promise_hightlight(i, c) {
             }
             graph();
             resolve();
-        }, 1000 );
+        }, 800 );
     } )
 }
 
@@ -30,7 +30,7 @@ export function promise_hightlight(i, c) {
 
 export function sortingOver() {
     
-    ctx.clearRect(0, 0, innerWidth, innerHeight );
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight );
     for(var j = 0; j < 12; j++) {
         rectArray[j].draw(rectArray[j].x, rectArray[j].y, rectArray[j].width, rectArray[j].height, "green"); 
     }
