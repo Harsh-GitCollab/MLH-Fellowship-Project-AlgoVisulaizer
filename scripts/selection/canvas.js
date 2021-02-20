@@ -3,8 +3,8 @@ import { promise_hightlight, promise_swap } from '../selection/animate.js';
 
 
 var canvas = document.getElementById("myCanvas");
-canvas.width = 1200;
-canvas.height = 870;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 export var ctx = canvas.getContext("2d");
 

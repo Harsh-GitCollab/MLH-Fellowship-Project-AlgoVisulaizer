@@ -3,38 +3,40 @@
    padding: 0;
 }
 
+body {
+    overflow: hidden;
+}
+
 .nav_container {
     background: rgb(11, 212, 248);
     color: white;
-    padding-top: 10px; 
-    padding-bottom: 10px;
-    display: relative;
+    
+    
 }
+
 
 #nav_bar li {
     display: inline-block;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: sans-serif;
     list-style: none;
-    padding: 5px;
-    margin-left: 39px;
+    padding: 1em;
 
 }
 
 #nav_bar #logo {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 1.8rem;
     font-weight: 900;
-    margin-left: 80px;
-    margin-right: 160px;
+    padding: 1em;
     color: black;
 }
 
-
+/*
 #nav_bar .pivot {
-    margin-right: 260px;
-}
+   
+}*/
 
 
 #nav_bar li:hover {
@@ -42,20 +44,3 @@
     cursor: pointer;
 }
 
-/* body -----------------------------------------*/
-
-.main_container {
-    display: flex;
-}
-
-.canvasContainer {
-    
-    width: 1330px;
-    height: 917px;
-}
-
-.notes {
-    background:rgb(191, 232, 240);
-    border-left: 6px solid rgb(80, 204, 235);
-    width: 600px;
-}

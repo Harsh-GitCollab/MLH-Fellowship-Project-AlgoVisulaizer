@@ -6,8 +6,9 @@ import {promise_hightlight, promise_swap, sortingOver} from '../bubble/animate.j
 
 // selectors 
 var canvas = document.getElementById("myCanvas");
-canvas.width = 1200;
-canvas.height = 870;
+console.log(canvas);
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 
 // getting the magic brush
